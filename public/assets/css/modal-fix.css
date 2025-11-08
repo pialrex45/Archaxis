@@ -1,0 +1,14 @@
+/* Global Modal Fix (centralized) */
+/* Single source of truth for stacking order; align with Bootstrap defaults */
+.modal { z-index: 1055; }
+.modal-backdrop { z-index: 1050; }
+
+/* Ensure decorative containers never surpass modal layer */
+.container.surface-glass, .container.shadow-soft, .container.border-gradient-primary { position: relative; z-index: 1; }
+
+/* Safety: allow pointer events inside modal always */
+.modal.show { pointer-events: auto; }
+.modal-dialog, .modal-content { pointer-events: auto; }
+
+/* Prevent filters/opacity on ancestors from muting modal interactivity */
+body.modal-open [style*="filter"], body.modal-open [style*="opacity"] { filter:none !important; opacity:1 !important; }

@@ -1,0 +1,19 @@
+/* Custom tweaks for two-panel login inspired layout */
+.auth-card-split{background:#1e3a77;color:#fff;border-radius:18px;padding:2rem;box-shadow:0 18px 50px rgba(2,6,23,.18)}
+.auth-card-split h2{color:#fff}
+.auth-hint{color:rgba(255,255,255,.8)}
+.icon-input{position:relative}
+.icon-input i{position:absolute; right:14px; top:50%; transform:translateY(-50%); color:#cbd5e1}
+.icon-input .form-control{background:transparent;border:0;border-bottom:2px solid rgba(255,255,255,.55);border-radius:0;color:#fff;padding-right:36px}
+.icon-input .form-control::placeholder{color:rgba(255,255,255,.65)}
+.icon-input .form-control:focus{box-shadow:none;border-color:#fff}
+.btn-primary{background:#fff;border-color:#fff;color:#1e3a77}
+.btn-primary:hover{filter:brightness(.95);color:#1e3a77}
+.social-circle{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:#113a7b;color:#fff;text-decoration:none}
+.social-circle:hover{filter:brightness(1.05)}
+.split-right{background:linear-gradient(180deg,#142a5c 0%, #0e214a 100%)}
+.split-caption h1{font-size:26px; letter-spacing:.06em; text-transform:uppercase}
+.split-bg{filter:brightness(.85)}
+/* Adjust container spacing */
+.split-right-top .back-link{color:#cfe1ff}
+.split-right-bottom{color:rgba(255,255,255,.75)}

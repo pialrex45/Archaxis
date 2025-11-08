@@ -1,0 +1,453 @@
+*:fullscreen, *:-webkit-full-screen, *:-moz-full-screen {
+    background-color: rgba(255,255,255,0);
+    }
+    
+    h2 {
+      font-size:1.4em;
+    }
+    
+    .color {
+      width:30px;
+      height:30px;
+      border:0.5px solid #eee;
+      border-radius:3px;
+      transition:  0.15s;
+      margin-right:5px;
+      float:left;
+    }
+    .color:hover {
+      border: 0.5px solid #aaa;
+      transform: scale(1.3);
+    }
+    
+    .boxMouseOver {transition:0.2s;border:3px solid #fff;}
+    .boxMouseOver:hover {
+      border:3px solid #08d;
+      border-radius:3px;
+      cursor: pointer;
+    }
+    
+    .leftBox {
+      background:#fff;
+      box-shadow:2px 0px 3px #ccc;
+      top:0px;
+      width:200px;
+      height:100vh;
+      padding:13px;
+      position:absolute;
+      z-index:2;
+      display:none;
+      font-size:0.9em;
+    }
+    
+    /* Scrollable panel wrapper for left controls */
+    .panel-scroll {
+      max-height: calc(100vh - 60px); /* leave room for header/slider */
+      overflow-y: auto;
+      padding-right: 8px; /* space for slider */
+    }
+    
+    /* Vertical slider container */
+    .panel-slider {
+      position: absolute;
+      right: 8px;
+      top: 8px;
+      bottom: 8px;
+      width: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none; /* allow clicks to pass to slider only */
+    }
+    
+    .panel-slider input[type="range"] {
+      appearance: none;
+      -webkit-appearance: none;
+      /* writing-mode removed because bt-lr is non-standard; rotation handles vertical display */
+      width: 100%;
+      height: calc(100% - 16px);
+      transform: rotate(270deg); /* rotate to vertical orientation */
+      pointer-events: auto;
+    }
+    
+    .panel-slider input[type="range"]::-webkit-slider-runnable-track {
+      background: #e6e6e6;
+      height: 6px;
+      border-radius: 3px;
+    }
+    .panel-slider input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 14px;
+      height: 14px;
+      background: #6c757d;
+      border-radius: 50%;
+      box-shadow: 0 0 2px rgba(0,0,0,0.3);
+    }
+    
+    #panel {
+      display: block;
+      left:-200px;
+      transition-duration: 0.3s;
+      transition-timing-function: ease-in;
+      transition-delay: 250ms;
+    }
+    
+    #areaValue {
+      position:absolute;
+      top:0;
+      left:210px;
+      padding:5px;
+      color:#333;
+      font-size:1.5em;
+    }
+    header{display:none;font-size:11px}
+    
+    @media print {
+        .leftBox {
+            display: none;
+        }
+        header {display:block}
+  #boxScale {display:none;}
+  #boxbind {display:none;}
+        #moveBox {display:none;}
+        #zoomBox {display:none;}
+        #boxinfo {display:none;}
+        #lin {height:19cm;width:27cm}
+        #boxgrid {height:19cm;width:27cm}
+        #areaValue {left:0px;top:10px}
+            *,
+        *:before,
+        *:after,
+        *:first-letter,
+        p:first-line,
+        div:first-line,
+        blockquote:first-line,
+        li:first-line {
+            background: transparent !important;
+            color: #000 !important;
+            box-shadow: none !important;
+            text-shadow: none !important;
+        }
+    }
+    body {font-family: 'Roboto', sans-serif;overflow:hidden}
+    input[type=range] {
+      appearance: none;
+      -webkit-appearance: none;
+      margin: 18px 0;
+      width: 100%;
+    }
+    input[type=range]:focus {
+      outline: none;
+    }
+    input[type=range]::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 8.4px;
+      cursor: pointer;
+      transition: 0.2s;
+      background: #3071a9;
+      border-radius: 1.3px;
+      border: 0.2px solid #010101;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      border: 1px solid #000000;
+      height: 20px;
+      width: 16px;
+      border-radius: 3px;
+      background: #ffffff;
+      cursor: pointer;
+      -webkit-appearance: none;
+      margin-top: -14px;
+    }
+    input[type=range]:focus::-webkit-slider-runnable-track {
+      background: #367ebd;
+    }
+    input[type=range]::-moz-range-track {
+      width: 100%;
+      height: 8.4px;
+      cursor: pointer;
+      transition: 0.2s;
+      background: #3071a9;
+      border-radius: 1.3px;
+      border: 0.2px solid #010101;
+    }
+    input[type=range]::-moz-range-thumb {
+      border: 1px solid #000000;
+      height: 20px;
+      width: 16px;
+      border-radius: 3px;
+      background: #ffffff;
+      cursor: pointer;
+    }
+    input[type=range]::-moz-focus-outer {
+        border: 0;
+        }
+    input[type=range]::-ms-track {
+      width: 100%;
+      height: 8.4px;
+      cursor: pointer;
+      transition: 0.2s;
+      background: transparent;
+      border-color: transparent;
+      border-width: 16px 0;
+      color: transparent;
+    }
+    input[type=range]::-ms-fill-lower {
+      background: #2a6495;
+      border: 0.2px solid #010101;
+      border-radius: 2.6px;
+      box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    }
+    input[type=range]::-ms-fill-upper {
+      background: #3071a9;
+      border: 0.2px solid #010101;
+      border-radius: 2.6px;
+      box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    }
+    input[type=range]::-ms-thumb {
+      box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+      border: 1px solid #000000;
+      height: 20px;
+      width: 16px;
+      border-radius: 3px;
+      background: #ffffff;
+      cursor: pointer;
+    }
+    input[type=range]:focus::-ms-fill-lower {
+      background: #3071a9;
+    }
+    input[type=range]:focus::-ms-fill-upper {
+      background: #367ebd;
+    }
+    
+    .modalBox {
+      position:absolute;
+      display:none;
+      top:0;
+      left:0;
+      width:100vw;
+      height:100vh;
+      z-index:1000
+    }
+    .modalBox::after {
+      content: "";
+      background-image: linear-gradient(#fff,#777);
+      opacity: 0.5;
+      top: 0;
+      left: 0;
+      width:100vw;
+      height:100vh;
+      position: absolute;
+      z-index: -1;
+    }
+    .modalBoxContent {
+      position: relative;
+      margin: auto;
+      padding:20px;
+      width:300px;
+      border-radius:5px;
+      background:#fff;
+      font-size:1.5em;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+      animation-name: animatetop;
+      animation-duration: 0.3s
+    }
+    /* Add Animation */
+    @keyframes animatetop {
+        from {top: -300px; opacity: 0}
+        to {top: 0; opacity: 1}
+    }
+    @keyframes animatedown {
+        from {top: 0px; opacity: 1}
+        to {top: -300px; opacity: 0}
+    }
+    
+    .area {
+      display:block;
+      color:#34e0be;
+      font-size:12.5px;
+      font-weight:normal;
+    }
+    
+    .funkyradio div {
+    clear: both;
+    overflow: hidden;
+    }
+    
+    .funkyradio label {
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid #D1D3D4;
+    font-weight: normal;
+    }
+    
+    .funkyradio input[type="radio"]:empty,
+    .funkyradio input[type="checkbox"]:empty {
+    display: none;
+    }
+    
+    .funkyradio input[type="radio"]:empty ~ label,
+    .funkyradio input[type="checkbox"]:empty ~ label {
+    position: relative;
+    line-height: 2.5em;
+    text-indent: 3.25em;
+    cursor: pointer;
+    -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+    }
+    
+    .funkyradio input[type="radio"]:empty ~ label:before,
+    .funkyradio input[type="checkbox"]:empty ~ label:before {
+    position: absolute;
+    display: block;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    content: '';
+    width: 2.5em;
+    background: #D1D3D4;
+    border-radius: 3px 0 0 3px;
+    }
+    
+    .funkyradio input[type="radio"]:hover:not(:checked) ~ label,
+    .funkyradio input[type="checkbox"]:hover:not(:checked) ~ label {
+    color: #888;
+    }
+    
+    .funkyradio input[type="radio"]:hover:not(:checked) ~ label:before,
+    .funkyradio input[type="checkbox"]:hover:not(:checked) ~ label:before {
+    content: '\2714';
+    text-indent: .9em;
+    color: #C2C2C2;
+    }
+    
+    .funkyradio input[type="radio"]:checked ~ label,
+    .funkyradio input[type="checkbox"]:checked ~ label {
+    color: #777;
+    }
+    
+    .funkyradio input[type="radio"]:checked ~ label:before,
+    .funkyradio input[type="checkbox"]:checked ~ label:before {
+    content: '\2714';
+    text-indent: .9em;
+    color: #333;
+    background-color: #ccc;
+    }
+    
+    .funkyradio input[type="radio"]:focus ~ label:before,
+    .funkyradio input[type="checkbox"]:focus ~ label:before {
+    box-shadow: 0 0 0 3px #999;
+    }
+    
+    .funkyradio-default input[type="radio"]:checked ~ label:before,
+    .funkyradio-default input[type="checkbox"]:checked ~ label:before {
+    color: #333;
+    background-color: #ccc;
+    }
+    
+    .funkyradio-primary input[type="radio"]:checked ~ label:before,
+    .funkyradio-primary input[type="checkbox"]:checked ~ label:before {
+    color: #fff;
+    background-color: #337ab7;
+    }
+    
+    .funkyradio-success input[type="radio"]:checked ~ label:before,
+    .funkyradio-success input[type="checkbox"]:checked ~ label:before {
+    color: #fff;
+    background-color: #5cb85c;
+    }
+    
+    .funkyradio-danger input[type="radio"]:checked ~ label:before,
+    .funkyradio-danger input[type="checkbox"]:checked ~ label:before {
+    color: #fff;
+    background-color: #d9534f;
+    }
+    
+    .funkyradio-warning input[type="radio"]:checked ~ label:before,
+    .funkyradio-warning input[type="checkbox"]:checked ~ label:before {
+    color: #fff;
+    background-color: #f0ad4e;
+    }
+    
+    .funkyradio-info input[type="radio"]:checked ~ label:before,
+    .funkyradio-info input[type="checkbox"]:checked ~ label:before {
+    color: #fff;
+    background-color: #5bc0de;
+    }
+    .roomColor {transition:all .1s ease-in-out;float:left;width:36px;height:36px;border-radius:5px 5px 18px 5px;margin:3px}
+    .roomColor:hover {transform: scale(1.1);cursor:pointer;border:1px solid #333;}
+    .btn {margin-bottom:6px;transition:all 0.3s}
+    .fully {width:100%}
+    .halfy {width:47%}
+    .btn:hover {background:#08d;}
+      .ovv {transition:all 0.1s;}
+    
+    /* Panel button refinements */
+    #panel .btn { border-radius:8px; font-weight:600; }
+    #panel .btn i.fa { opacity: 0.9; }
+    #panel .btn.btn-light.shadow { background:#ffffff; color:#2b2b2b; }
+    .circle_css {fill:#5cba79;fill-opacity:0.9;transition:all 0.4s}
+    .circle_css_2 {stroke:#5cba79;stroke-width:0;fill:#5cba79;fill-opacity:0.9;animation: myAnim 0.6s linear infinite;}
+    @keyframes myAnim{
+     0% {  stroke-width:0}
+     50% {  stroke-width:8}
+     100% {  stroke-width:0}
+      }
+      @keyframes myAnim2{
+       0% {  stroke-width:4}
+       50% {  stroke-width:7}
+       100% {  stroke-width:4}
+        }
+    .circle_css_3 {stroke:#5cba79;stroke-width:5;fill:#d7f00b;fill-opacity:1;transition:all 0.4s}
+    .circleGum  {fill-opacity:0.2;fill:#e1f410;stroke-width:4;stroke:#5cba79;transition:all 0.5s;animation: myAnim2 0.6s linear infinite;}
+    .line_css {stroke:transparent;stroke-width:15;transition:all 0.2s}
+    /*.line_css:hover {stroke:#08d;stroke-width:15;stroke-opacity:0.5;cursor:pointer;}*/
+    .trash_css {stroke:transparent;stroke-width:5;transition:all 0.2s}
+    .trash_css:hover {stroke:#f00;stroke-width:5;stroke-opacity:0.5;cursor:pointer;}
+    html {height:100%;margin:0;padding:0}
+    .tool_color {float:left;width:30px;height:30px;margin:2.2px}
+    html {padding:0;margin:0;height:100%}
+    
+    #ex1Slider .slider-selection {
+    background: #bec7cd;
+    }
+    
+  /* Panel UI beautification */
+  .panel-section { margin-bottom: 12px; }
+  .panel-title { font-size: 0.95rem; font-weight: 600; color: #4b79aa; margin: 6px 0 8px; }
+  .panel-card { background:#fff; border:1px solid #e6e6e6; border-radius:8px; padding:10px; box-shadow:0 2px 6px rgba(0,0,0,.08); }
+  .btn-block { width:100%; }
+  .btn-action { display:flex; align-items:center; justify-content:center; gap:8px; }
+  .btn-action .fa { font-size: 0.95rem; }
+  .btn-soft { background:#f9fbfd; border:1px solid #e4eaf1; color:#0d6efd; }
+  .btn-soft:hover { background:#eef5ff; color:#0b5ed7; }
+  .btn-success-soft { background:#eaf8ee; border:1px solid #c8efcf; color:#1e7e34; }
+  .btn-success-soft:hover { background:#dcf4e4; color:#146c2e; }
+  .btn-secondary-soft { background:#eef1f5; border:1px solid #e2e6ea; color:#495057; }
+  .btn-secondary-soft:hover { background:#e7ebf0; color:#343a40; }
+  /* Selected / active state for panel buttons */
+  .btn-selected {
+    background: linear-gradient(180deg, #e6f0ff, #cfe1ff) !important;
+    border-color: #a7c4ff !important;
+    color: #07316a !important;
+    box-shadow: 0 4px 12px rgba(16, 78, 138, 0.15);
+    transform: translateY(-1px);
+  }
+  /* a subtle icon accent when selected */
+  .btn-selected .fa { color: #07407a; opacity: 1; }
+
+  /* allow group selection look for mode buttons */
+  .panel-card .btn.mode { border-radius: 10px; }
+
+  /* Override Bootstrap green for panel-local success buttons so existing
+     JS that toggles `btn-success` will use the blue selected style inside the left panel. */
+  #panel .btn.btn-success {
+    background: linear-gradient(180deg, #e6f0ff, #cfe1ff) !important;
+    border-color: #a7c4ff !important;
+    color: #07316a !important;
+    box-shadow: 0 4px 12px rgba(16, 78, 138, 0.15) !important;
+    transform: translateY(-1px);
+  }
+  #panel .btn.btn-success .fa { color: #07407a !important; }
+    

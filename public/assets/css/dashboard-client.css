@@ -1,0 +1,49 @@
+/* Client dashboard themed polish */
+:root{
+  --cd-primary:#4f46e5; /* indigo */
+  --cd-success:#10b981; /* emerald */
+  --cd-muted:#6b7280; /* gray-500 */
+  --cd-surface:#ffffff;
+  --cd-bg:#f5f7fb;
+}
+
+body.client-dash{ background: var(--cd-bg); }
+
+.page-head{ font-size:1.35rem; font-weight:700; letter-spacing:.01em; margin: .5rem 0 1rem; }
+
+.overview-banner{ display:flex; align-items:center; gap:12px; padding:10px 14px; border-radius:14px; background: linear-gradient(135deg, rgba(79,70,229,.1), rgba(16,185,129,.08)); border:1px solid rgba(79,70,229,.18); box-shadow: 0 10px 26px rgba(79,70,229,.08) }
+.overview-banner .icon{ width:16px; height:16px; border-radius:50%; background: radial-gradient(circle at 30% 30%, #a5b4fc, #6366f1); box-shadow: 0 0 0 4px rgba(99,102,241,.12) inset }
+.overview-banner .title{ font-weight:700 }
+.overview-banner .subtitle{ color: var(--cd-muted) }
+
+/* Buttons */
+.btn-gradient{ color:#fff !important; border:none }
+.btn-gradient.btn-primary{ background: linear-gradient(135deg, #7c3aed, #4f46e5) }
+.btn-gradient.btn-success{ background: linear-gradient(135deg, #34d399, #10b981) }
+.btn-gradient:hover{ filter: brightness(1.02) }
+
+/* Make sure gradient buttons are always interactive and above subtle overlays */
+.btn-gradient{ position:relative; z-index: 3; pointer-events: auto }
+
+/* Cards */
+.client-dash .card{ border:none; box-shadow: 0 18px 40px rgba(0,0,0,.06); border-radius:16px }
+.client-dash .card .card-title{ font-weight:700 }
+.client-dash .card .kicker{ text-transform:uppercase; letter-spacing:.08em; font-size:.75rem; color:#64748b; margin-bottom:.35rem }
+.client-dash .card .card-text{ color:#4b5563 }
+
+/* Chat */
+.client-chat .messages{ max-height:360px }
+.client-chat .btn-send{ background: linear-gradient(135deg, #7c3aed, #4f46e5); border:none }
+.client-chat .btn-send:hover{ filter:brightness(1.05) }
+
+/* Design Saves & Estimates cards */
+.ds-card{ background:var(--cd-surface); border:1px solid #e9edf5; border-radius:14px; padding:14px 16px; margin-bottom:12px; box-shadow:0 12px 26px rgba(0,0,0,.05) }
+.ds-header{ display:flex; align-items:start; justify-content:space-between; gap:10px; margin-bottom:8px }
+.ds-title{ font-weight:700; color:#111827 }
+.ds-sub{ color:#6b7280; font-size:.9rem }
+.ds-chip{ align-self:flex-start; background:#f1f5ff; color:#374151; border:1px solid #e0e7ff; padding:.25rem .5rem; border-radius:8px; font-size:.8rem }
+.ds-sections{ margin-top:6px }
+.ds-section-title{ font-weight:700; margin-bottom:6px }
+.ds-kv{ list-style:none; padding:0; margin:0 }
+.ds-kv li{ display:flex; justify-content:space-between; padding:.18rem 0; border-bottom:1px dashed #eef2f7 }
+.ds-kv li:last-child{ border-bottom:none }

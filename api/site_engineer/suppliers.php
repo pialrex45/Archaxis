@@ -1,0 +1,23 @@
+<?php
+// Site Engineer Suppliers API (read-only)
+require_once __DIR__ . '/../../app/core/auth.php';
+require_once __DIR__ . '/../../config/database.php';
+require_once __DIR__ . '/../../app/controllers/SiteEngineerController.php';
+
+if (!headers_sent()) { header('Content-Type: application/json'); }
+requireSiteEngineer();
+$method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
+$ctl = new SiteEngineerController();
+
+try {
+    if ($method !== 'GET') {
+        http_response_code(405);
+        echo json_encode(['success'=>false,'message'=>'Method not allowed']);
+        exit;
+    }
+    $limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 50;
+    echo json_encode($ctl->suppliers($limit));
+} catch (Throwable $e) {
+    http_response_code(500);
+    echo json_encode(['success'=>false,'message'=>'Server error','error'=>$e->getMessage()]);
+}

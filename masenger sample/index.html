@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Management System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Left Sidebar -->
+        <aside class="left-sidebar">
+            <div class="sidebar-header">
+                <h2>Projects</h2>
+            </div>
+            <div class="project-list">
+                <button class="project-btn active" data-project="0">Project 0</button>
+                <button class="project-btn" data-project="1">Project 1</button>
+                <button class="project-btn" data-project="2">Project 2</button>
+                <button class="project-btn" data-project="3">Project 3</button>
+                <button class="project-btn" data-project="4">Project 4</button>
+                <button class="project-btn" data-project="5">Project 5</button>
+                <button class="project-btn" data-project="6">Project 6</button>
+                <button class="project-btn" data-project="7">Project 7</button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top Section -->
+            <header class="top-section">
+                <div class="project-info">
+                    <div class="project-name">project name</div>
+                </div>
+                <div class="role-buttons">
+                    <button class="role-btn active" data-role="client">Client</button>
+                    <button class="role-btn" data-role="project-manager">Project Manager</button>
+                    <button class="role-btn" data-role="site-engineer">Site Engineer</button>
+                    <button class="role-btn" data-role="site-manager">Site Manager</button>
+                    <button class="role-btn" data-role="sub-contractor">Sub Contractor</button>
+                    <button class="role-btn" data-role="supervisor">Supervisor</button>
+                    <button class="role-btn" data-role="logistics-officer">Logistics Officer</button>
+                    <button class="role-btn" data-role="finance-officer">Finance Officer</button>
+                </div>
+            </header>
+
+            <!-- Chat/Message Area -->
+            <section class="chat-section">
+                <div class="chat-area">
+                    <p class="placeholder-text">
+                        Just as when you press the Project Manager button, the Project Manager's messaging system is activated, similarly, when you activate the rest, the Admin's messaging system is activated along with them.
+                    </p>
+                </div>
+                <div class="message-input-container">
+                    <input type="text" class="message-input" placeholder="Type your message...">
+                    <button class="send-btn">Send</button>
+                </div>
+            </section>
+        </main>
+
+        <!-- Right Sidebar -->
+        <aside class="right-sidebar">
+            <div class="info-box">
+                <h3>project manager details</h3>
+                <div class="info-content">
+                    <!-- Project manager details content -->
+                </div>
+            </div>
+            <div class="info-box">
+                <h3>project details</h3>
+                <div class="info-content">
+                    <!-- Project details content -->
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

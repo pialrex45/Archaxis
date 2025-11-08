@@ -1,0 +1,19 @@
+# Route requests through /public. Serve assets directly; send others to index.php
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /Ironroot/
+
+    # Serve existing files/directories directly
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Static assets (and uploads) from public
+    RewriteRule ^(assets|uploads)/(.*)$ public/$1/$2 [L]
+
+    # Root request
+    RewriteRule ^$ public/ [L]
+
+    # Everything else goes to front controller
+    RewriteRule ^(.*)$ public/index.php [L]
+</IfModule>

@@ -1,0 +1,70 @@
+/* Register page tweaks sitting on top of auth-glass.css */
+.auth-intro{ color:#9fb7dd; letter-spacing:.08em; text-transform:uppercase }
+.auth-card h1, h1{ color:#fff; font-weight:800; letter-spacing:.02em; text-shadow:0 2px 12px rgba(0,0,0,.35) }
+.auth-sub{ color:#a9c4ea }
+.auth-sub a{ color:#a5c8ff; text-decoration:none }
+.auth-sub a:hover{ text-decoration:underline }
+.dot{ color:#4ea3ff; text-shadow:0 0 10px rgba(78,163,255,.7) }
+
+.small-text{ font-size:.8rem; color:#cfe1ff }
+.input-group .input-group-text{ background:rgba(255,255,255,0.06); color:#cbd5e1; border:1px solid rgba(255,255,255,.22); width:42px; justify-content:center; border-radius:8px }
+.input-group .form-control{ background:rgba(255,255,255,0.06); color:#fff; border:1px solid rgba(255,255,255,.22); height:42px; border-radius:8px }
+.form-select{ background:rgba(255,255,255,0.06); color:#e5e7eb; border:1px solid rgba(255,255,255,.22); height:42px; border-radius:8px }
+.input-group .form-control::placeholder{ color:rgba(255,255,255,.75) }
+.input-group .form-control:focus, .form-select:focus{ box-shadow:0 0 0 .2rem rgba(64,133,255,.25); border-color:#7fb1ff }
+
+.btn, .btn-muted, .btn-primary{ height:42px; border-radius:10px }
+.btn-muted{ background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,.22); color:#e5e7eb }
+.btn-muted:hover{ filter:brightness(1.05) }
+
+/* Wider card for multi-column form */
+.auth-card{ padding:24px }
+@media (min-width: 768px){ .auth-card{ padding:28px } }
+
+/* Organized header spacing */
+.auth-hero{ margin-bottom:.35rem }
+/* Ensure all three lines show and pop */
+.auth-hero .auth-intro{ font-size:.8rem; opacity:1; display:block; margin-bottom:.15rem }
+.auth-hero h1{ font-size:clamp(2rem, 3.4vw + 1rem, 2.9rem); font-weight:900 }
+.auth-hero .auth-sub{ margin-top:.25rem; display:block }
+
+/* Make the form area visually tighter */
+.auth-card{ max-width: 620px; margin-left:0; }
+.auth-card .row.g-3{ row-gap:.75rem }
+
+/* Compact top-right brand buttons */
+/* New top-button designs: compact "chip" style */
+.auth-brandbar .auth-pill{
+	border-radius:999px;
+	padding:.2rem .55rem; /* smaller height/width */
+	font-weight:700;
+	line-height:1.05;
+	font-size:.82rem; /* smaller text */
+	min-height:28px;
+	backdrop-filter:saturate(120%) blur(6px);
+}
+.auth-brandbar .btn-outline-light.auth-pill{
+	background:rgba(255,255,255,.06);
+	border:1px solid rgba(255,255,255,.26);
+	color:#f0f6ff;
+	box-shadow:inset 0 0 0 1px rgba(255,255,255,.05), 0 3px 8px rgba(0,0,0,.14);
+}
+.auth-brandbar .btn-outline-light.auth-pill:hover{
+	background:rgba(255,255,255,.12);
+	border-color:rgba(255,255,255,.45);
+}
+.auth-brandbar .btn-primary.auth-pill{
+	background:linear-gradient(135deg,#5aa8ff 0%, #1f5eff 100%);
+	border:none;
+	color:#fff;
+	box-shadow:0 8px 18px rgba(31,94,255,.28), inset 0 -2px 0 rgba(255,255,255,.16);
+}
+.auth-brandbar .btn-primary.auth-pill:hover{ transform:translateY(-1px); box-shadow:0 14px 28px rgba(31,94,255,.42) }
+
+/* Primary submit: smaller and modern */
+.auth-card .btn-primary{
+	background:linear-gradient(135deg,#3b82f6 0%, #2563eb 100%);
+	border:none; border-radius:12px;
+	box-shadow:0 12px 28px rgba(37,99,235,.32), inset 0 -2px 0 rgba(255,255,255,.16);
+}
+.auth-card .btn-primary:hover{ transform:translateY(-1px); box-shadow:0 16px 34px rgba(37,99,235,.38) }

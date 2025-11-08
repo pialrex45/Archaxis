@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "name": "John Admin",
+        "email": "john@ironroot.com",
+        "role": "admin"
+    },
+    {
+        "id": 2,
+        "name": "Jane Supervisor",
+        "email": "jane@ironroot.com",
+        "role": "supervisor"
+    },
+    {
+        "id": 3,
+        "name": "Bob Manager",
+        "email": "bob@ironroot.com",
+        "role": "project_manager"
+    },
+    {
+        "id": 4,
+        "name": "Alice Client",
+        "email": "alice@ironroot.com",
+        "role": "client"
+    },
+    {
+        "id": 5,
+        "name": "Mike Engineer",
+        "email": "mike@ironroot.com",
+        "role": "site_engineer"
+    }
+]

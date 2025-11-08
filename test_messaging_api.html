@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Messaging API Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-result { padding: 10px; margin: 10px 0; border-radius: 5px; }
+        .success { background: #d4edda; border: 1px solid #c3e6cb; color: #155724; }
+        .error { background: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; }
+        .info { background: #d1ecf1; border: 1px solid #bee5eb; color: #0c5460; }
+        pre { background: #f8f9fa; padding: 10px; border-radius: 3px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>Messaging System API Test</h1>
+    
+    <div id="results"></div>
+    
+    <script>
+    async function testAPI() {
+        const results = document.getElementById('results');
+        
+        function addResult(message, type = 'info') {
+            const div = document.createElement('div');
+            div.className = `test-result ${type}`;
+            div.innerHTML = message;
+            results.appendChild(div);
+        }
+        
+        addResult('<h3>Testing Messaging API...</h3>');
+        
+        // Test 1: Users API
+        try {
+            addResult('<h4>Test 1: Loading Users</h4>');
+            const response = await fetch('/Ironroot/api/messages/?action=users');
+            addResult(`Status: ${response.status} ${response.statusText}`, response.ok ? 'success' : 'error');
+            
+            if (response.ok) {
+                const data = await response.json();
+                addResult('<strong>Users API Response:</strong><pre>' + JSON.stringify(data, null, 2) + '</pre>', 'success');
+                
+                if (data.users && Array.isArray(data.users)) {
+                    addResult(`✓ Found ${data.users.length} users`, 'success');
+                } else {
+                    addResult('✗ Invalid response format', 'error');
+                }
+            } else {
+                const errorText = await response.text();
+                addResult('<strong>Error Response:</strong><pre>' + errorText + '</pre>', 'error');
+            }
+        } catch (error) {
+            addResult(`✗ Error: ${error.message}`, 'error');
+        }
+        
+        // Test 2: Conversations API
+        try {
+            addResult('<h4>Test 2: Loading Conversations</h4>');
+            const response = await fetch('/Ironroot/api/messages/?action=conversations');
+            addResult(`Status: ${response.status} ${response.statusText}`, response.ok ? 'success' : 'error');
+            
+            if (response.ok) {
+                const data = await response.json();
+                addResult('<strong>Conversations API Response:</strong><pre>' + JSON.stringify(data, null, 2) + '</pre>', 'success');
+            } else {
+                const errorText = await response.text();
+                addResult('<strong>Error Response:</strong><pre>' + errorText + '</pre>', 'error');
+            }
+        } catch (error) {
+            addResult(`✗ Error: ${error.message}`, 'error');
+        }
+        
+        // Test 3: Debug API
+        try {
+            addResult('<h4>Test 3: Debug Info</h4>');
+            const response = await fetch('/Ironroot/api/messages/?action=debug');
+            addResult(`Status: ${response.status} ${response.statusText}`, response.ok ? 'success' : 'error');
+            
+            if (response.ok) {
+                const data = await response.json();
+                addResult('<strong>Debug API Response:</strong><pre>' + JSON.stringify(data, null, 2) + '</pre>', 'info');
+            } else {
+                const errorText = await response.text();
+                addResult('<strong>Error Response:</strong><pre>' + errorText + '</pre>', 'error');
+            }
+        } catch (error) {
+            addResult(`✗ Error: ${error.message}`, 'error');
+        }
+    }
+    
+    // Run tests when page loads
+    window.addEventListener('load', testAPI);
+    </script>
+</body>
+</html>

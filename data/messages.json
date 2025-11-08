@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "sender_id": 1,
+        "receiver_id": 2,
+        "message_text": "Hello Jane! How is the project going?",
+        "created_at": "2025-10-06 17:16:21"
+    },
+    {
+        "id": 2,
+        "sender_id": 2,
+        "receiver_id": 1,
+        "message_text": "Hi John! Everything is on track.",
+        "created_at": "2025-10-06 17:16:21"
+    },
+    {
+        "id": 3,
+        "sender_id": 1,
+        "receiver_id": 3,
+        "message_text": "Bob, can you check the timeline?",
+        "created_at": "2025-10-06 17:16:21"
+    },
+    {
+        "id": 4,
+        "sender_id": 3,
+        "receiver_id": 1,
+        "message_text": "Sure, I will review it today.",
+        "created_at": "2025-10-06 17:16:21"
+    },
+    {
+        "id": 5,
+        "sender_id": 1,
+        "receiver_id": 2,
+        "message_text": "bbjn",
+        "created_at": "2025-10-06 17:16:44"
+    },
+    {
+        "id": 6,
+        "sender_id": 1,
+        "receiver_id": 5,
+        "message_text": "gdfgfd",
+        "created_at": "2025-10-06 17:18:32"
+    }
+]

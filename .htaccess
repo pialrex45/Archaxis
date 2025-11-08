@@ -1,0 +1,23 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /Ironroot/
+
+    # Allow direct access via /sub-contractor/... even if /Ironroot prefix omitted.
+    # Internally rewrite to the public front controller with correct base.
+    RewriteCond %{REQUEST_URI} ^/sub-contractor/
+    RewriteRule ^sub-contractor/(.*)$ public/index.php [L]
+
+    # Serve existing files/directories directly
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Map asset & upload folders explicitly to public
+    RewriteRule ^(assets|uploads)/(.*)$ public/$1/$2 [L]
+
+    # Root to public directory (directory index loads public/index.php)
+    RewriteRule ^$ public/ [L]
+
+    # All other requests go through the front controller
+    RewriteRule ^(.*)$ public/index.php [L]
+</IfModule>

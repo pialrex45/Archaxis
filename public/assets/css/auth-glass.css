@@ -1,0 +1,65 @@
+/* Fullscreen background + glass card login UI
+   Background image is replaceable via:
+   - env AUTH_BG_URL
+   - $authBgUrl passed from the view
+   - or by swapping /assets/img/login-bg.jpg
+*/
+
+:root{
+  --auth-glass-blur: 14px;
+  --auth-glass-bg: rgba(17, 25, 40, 0.55);
+  --auth-border: rgba(255,255,255,0.18);
+  --auth-input-bg: rgba(255,255,255,0.06);
+}
+
+.auth-glass-body{ min-height:100vh; position:relative; color:#e5e7eb; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", "Noto Sans", "Apple Color Emoji","Segoe UI Emoji"; overflow:hidden }
+.auth-glass-bg{ position:fixed; inset:0; background-position:center; background-size:cover; background-repeat:no-repeat; filter: brightness(.8); z-index:-2 }
+.auth-glass-overlay{ position:fixed; inset:0; background: linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.6) 100%); z-index:-1; pointer-events:none }
+
+.back-to-home{ position:fixed; top:10px; left:14px; color:#cfe1ff; text-decoration:none; z-index:10 }
+.back-to-home:hover{ text-decoration:underline }
+
+/* Brand bar overlay at top */
+.auth-brandbar{ position:fixed; top:0; left:0; right:0; z-index:10; background:transparent; color:#e5e7eb }
+.auth-brandbar .brand-dot{ width:10px; height:10px; border-radius:50%; background:#4ea3ff; display:inline-block; box-shadow:0 0 10px rgba(78,163,255,.9), 0 0 4px rgba(78,163,255,.8) inset }
+.auth-brandbar .brand-name{ color:#ffffff; font-weight:700 }
+.auth-brandbar .auth-pill{ border-radius:999px; padding:.25rem .6rem }
+
+/* Card */
+.auth-card{ position:relative; z-index:10; background:var(--auth-glass-bg); backdrop-filter: blur(var(--auth-glass-blur)); -webkit-backdrop-filter: blur(var(--auth-glass-blur)); border:1px solid var(--auth-border); border-radius:18px; padding:28px; box-shadow: 0 18px 60px rgba(0,0,0,.35); }
+.auth-card h2{ color:#fff; letter-spacing:.05em; text-transform:uppercase; font-weight:800; }
+.auth-sub{ color:rgba(255,255,255,.8) }
+
+/* Inputs with trailing icons */
+.icon-input{ position:relative }
+.icon-input .form-control{ background:var(--auth-input-bg); border:1px solid rgba(255,255,255,.22); color:#fff; padding-right:40px }
+.icon-input .form-control::placeholder{ color:rgba(255,255,255,.7) }
+.icon-input .form-control:focus{ box-shadow:none; border-color:#7fb1ff; background:rgba(255,255,255,.08) }
+.icon-input i{ position:absolute; right:12px; top:50%; transform:translateY(-50%); color:#cbd5e1; cursor:pointer }
+
+.btn-primary{ background:#1663ff; border-color:#1663ff }
+.btn-primary:hover{ filter:brightness(1.05) }
+
+.auth-link-row a{ color:#cfe1ff; text-decoration:none }
+.auth-link-row a:hover{ text-decoration:underline }
+
+.auth-glass-footer{ position:fixed; bottom:0; left:0; right:0; z-index:1; pointer-events:none }
+
+/* Avoid brand bar overlapping content */
+.auth-glass-body.has-brandbar main{ padding-top:48px }
+
+/* Ensure the main area sits above background layers */
+.auth-glass-body main{ position:relative; z-index:0; min-height:100dvh }
+/* Allow inner scroll for content while preventing body scroll */
+.auth-glass-body .content-slot{ max-height: none; overflow: visible; position: relative; z-index: 20 }
+
+@media (min-width: 576px){
+  .auth-card{ padding:36px }
+}
+
+/* Simple fade-in utility for auth pages */
+@keyframes fadeInAuth{
+  from { opacity:0; transform: translateY(6px); }
+  to { opacity:1; transform: none; }
+}
+.fade-in{ animation: fadeInAuth .35s ease both; }

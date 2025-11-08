@@ -1,0 +1,65 @@
+[
+    {
+        "id": 1,
+        "sender_id": 25,
+        "receiver_id": 1,
+        "message_text": "hi",
+        "created_at": "2025-10-06 18:15:33"
+    },
+    {
+        "id": 2,
+        "sender_id": 25,
+        "receiver_id": 1,
+        "message_text": "hi",
+        "created_at": "2025-10-06 18:15:40"
+    },
+    {
+        "id": 3,
+        "sender_id": 1,
+        "receiver_id": 25,
+        "message_text": "yo yo",
+        "created_at": "2025-10-06 18:20:11"
+    },
+    {
+        "id": 4,
+        "sender_id": 1,
+        "receiver_id": 25,
+        "message_text": "gdfgfd",
+        "created_at": "2025-10-06 18:26:47"
+    },
+    {
+        "id": 5,
+        "sender_id": 17,
+        "receiver_id": 1,
+        "message_text": "hi hlw",
+        "created_at": "2025-10-06 18:46:28"
+    },
+    {
+        "id": 6,
+        "sender_id": 1,
+        "receiver_id": 17,
+        "message_text": "hi",
+        "created_at": "2025-10-06 18:47:37"
+    },
+    {
+        "id": 7,
+        "sender_id": 1,
+        "receiver_id": 20,
+        "message_text": "hyououpuo",
+        "created_at": "2025-10-06 20:22:11"
+    },
+    {
+        "id": 8,
+        "sender_id": 20,
+        "receiver_id": 1,
+        "message_text": "hwy",
+        "created_at": "2025-10-06 20:23:08"
+    },
+    {
+        "id": 9,
+        "sender_id": 1,
+        "receiver_id": 26,
+        "message_text": "lalala",
+        "created_at": "2025-10-06 20:47:30"
+    }
+]

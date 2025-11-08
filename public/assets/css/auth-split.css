@@ -1,0 +1,43 @@
+/* Split auth layout tuned to match dashboard palette (light bg + bootstrap blue) */
+:root{
+  --bg:#f3f6fb;      /* start */
+  --bg2:#eef2f6;     /* end */
+  --card:#ffffff;
+  --text:#212529;
+  --muted:#6c757d;
+  --primary:#0d6efd;
+  --accent:#0b5ed7;
+}
+
+html,body{height:100%}
+body.auth-split-body{background:linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%); color:var(--text)}
+
+.split-left{min-height:60vh}
+.split-bg{position:absolute; inset:0; background:url('../img/port-hero.jpg') center/cover no-repeat; filter:brightness(.9)}
+.split-overlay{position:absolute; inset:0; background:linear-gradient(270deg, rgba(13,110,253,0.10) 0%, rgba(13,110,253,0.08) 30%, rgba(2,6,23,.28) 70%, rgba(2,6,23,.55) 100%)}
+.split-caption{position:absolute; right:3rem; bottom:2.5rem; color:#fff; text-shadow:0 2px 16px rgba(0,0,0,.45); text-align:right}
+
+.split-right{background:var(--bg)}
+.back-link{color:var(--primary); text-decoration:none}
+.back-link:hover{text-decoration:underline}
+
+/* Card */
+.auth-card-split{background:var(--card); border-radius:18px; box-shadow:0 12px 35px rgba(2,6,23,.08); padding:1.75rem}
+.auth-card-split h2{font-weight:800; color:var(--text)}
+.auth-hint{color:var(--muted)}
+
+.form-control{border-radius:12px}
+.form-control:focus{box-shadow:0 0 0 .2rem rgba(13,110,253,.25); border-color:#b6d4fe}
+
+.input-group>.form-control, .input-group>.form-select{border-radius:12px}
+.input-group .btn-eye{border:1px solid #e2e8f0; background:#fff}
+
+.btn-primary{background:var(--primary); border-color:var(--primary)}
+.btn-primary:hover{background:#0b5ed7; border-color:#0b5ed7}
+
+.small-muted{color:var(--muted)}
+
+/* Responsive tweaks */
+@media (max-width: 991.98px){
+  .split-caption{left:1.25rem; right:1.25rem; bottom:1.25rem}
+}
